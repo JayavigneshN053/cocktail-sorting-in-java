@@ -1,0 +1,46 @@
+import java.util.*;
+class Main{
+static void cocktail(int []arr,int beg,int n){
+    int swap=1;
+    int st=beg;
+    int end=n-1;
+    while(swap==1){
+        swap=0;
+        for(int i=0;i<end;i++){
+            if(arr[i]>arr[i+1]){
+                int temp=arr[i];
+                arr[i]=arr[i+1];
+                arr[i+1]=temp;
+                swap=1;
+            }
+        }
+            if(swap==0){
+                break;
+            }
+            swap=0;
+            end--;
+        
+        for(int i=end;i>st;i--){
+            if(arr[i]<arr[i-1]){
+                int temp=arr[i];
+                arr[i]=arr[i-1];
+                arr[i-1]=temp;
+                swap=1;
+            }
+        }
+        st++;
+    }
+}
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int []a=new int[n];
+        for(int i=0;i<n;i++){
+            a[i]=sc.nextInt();
+        }
+        cocktail(a,0,n);
+        for(int i=0;i<n;i++){
+            System.out.print(a[i]+" ");
+        }
+    }
+}
